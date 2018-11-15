@@ -1,16 +1,33 @@
 <template>
-    <div class="tool has-shadow">
+    <div class="tool has-shadow" @click="openBox">
       <div class="tool-content">
         <slot name="content"></slot>
       </div>
       <div class="tool-title">
         <slot name="title"></slot>
       </div>
+      <ToolBox v-if="isShow" :tool="name" :isShow="isShow" @closeBox="closeBox"></ToolBox>
     </div>
 </template>
 <script>
+import ToolBox from './ToolBox'
 export default {
-  name: 'Tool'
+  name: 'Tool',
+  components: {ToolBox},
+  props: ['name'],
+  data () {
+    return {
+      isShow: false
+    }
+  },
+  methods: {
+    openBox: function () {
+      this.isShow = true
+    },
+    closeBox: function (val) {
+      this.isShow = val
+    }
+  }
 }
 </script>
 
@@ -18,14 +35,20 @@ export default {
   .tool {
     width: 12rem;
     height: 9rem;
-    margin: 2rem;
+    margin: 1.5rem;
     border-radius: 5px;
     cursor: pointer;
     position: relative;
+    display: inline-block;
+  }
+  .tool:hover .tool-content {
+    transform: scale(1.1);
+    transition: .3s;
   }
   .tool-content {
     width: 100%;
     height: 100%;
+    border-radius: 5px;
   }
   .tool-content svg{
     height: 4.5rem;
