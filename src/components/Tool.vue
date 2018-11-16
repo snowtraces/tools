@@ -6,7 +6,7 @@
       <div class="tool-title">
         <slot name="title"></slot>
       </div>
-      <ToolBox v-if="isShow" :tool="name" :isShow="isShow" @closeBox="closeBox"></ToolBox>
+      <ToolBox v-show="isShow" :tool="name" :isShow="isShow" @closeBox="closeBox"></ToolBox>
     </div>
 </template>
 <script>
