@@ -37,7 +37,6 @@ export default {
     height: 9rem;
     margin: 1.5rem;
     border-radius: 5px;
-    cursor: pointer;
     position: relative;
     display: inline-block;
   }
@@ -49,6 +48,7 @@ export default {
     width: 100%;
     height: 100%;
     border-radius: 5px;
+    cursor: pointer;
   }
   .tool-content svg{
     height: 4.5rem;
@@ -67,9 +67,7 @@ export default {
     font-weight: 600;
     letter-spacing: .1em;
     border-radius: 0 0 5px 5px;
-  }
-  .has-shadow {
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+    cursor: pointer;
   }
 
 </style>
