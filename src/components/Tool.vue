@@ -1,12 +1,12 @@
 <template>
-    <div class="tool has-shadow" @click="openBox">
-      <div class="tool-content">
+    <div class="tool has-shadow">
+      <div class="tool-content" @click="openBox">
         <slot name="content"></slot>
       </div>
-      <div class="tool-title">
+      <div class="tool-title" @click="openBox">
         <slot name="title"></slot>
       </div>
-      <ToolBox v-show="isShow" :tool="name" :isShow="isShow" @closeBox="closeBox"></ToolBox>
+      <tool-box v-show="isShow" :tool="name" @closeBox="closeBox"></tool-box>
     </div>
 </template>
 <script>
@@ -24,8 +24,8 @@ export default {
     openBox: function () {
       this.isShow = true
     },
-    closeBox: function (val) {
-      this.isShow = val
+    closeBox: function () {
+      this.isShow = false
     }
   }
 }

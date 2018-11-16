@@ -12,23 +12,10 @@ import MarkDown from './tools/MarkDown'
 export default {
   name: 'ToolBox',
   components: {MarkDown, Magnet},
-  props: ['tool', 'isShow'],
-  data () {
-    return {
-      thisShow: this.isShow
-    }
-  },
+  props: ['tool'],
   methods: {
     hidden: function () {
-      this.thisShow = false
-    }
-  },
-  watch: {
-    isShow (val) {
-      this.thisShow = val
-    },
-    thisShow (val) {
-      this.$emit('closeBox', val)
+      this.$emit('closeBox')
     }
   }
 }
