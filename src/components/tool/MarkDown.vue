@@ -1,15 +1,17 @@
 <template>
   <div id="editor">
     <textarea :value="input" @input="update"></textarea>
-    <div v-html="compiledMarkdown"></div>
+    <div class="md-result"><div v-html="compiledMarkdown"></div><copy-button></copy-button></div>
   </div>
 </template>
 
 <script>
 import marked from 'marked'
 import _ from 'lodash'
+import CopyButton from '../CopyButton'
 export default {
   name: 'MarkDown',
+  components: {CopyButton},
   data () {
     return {
       input: '# hello'
@@ -36,7 +38,7 @@ export default {
     color: #333;
   }
 
-  textarea, #editor div {
+  textarea, #editor .md-result {
     display: inline-block;
     width: 49%;
     height: 100%;
@@ -44,9 +46,10 @@ export default {
     box-sizing: border-box;
     padding: 0 20px;
   }
-  #editor div {
+  #editor .md-result {
     background: #fff;
     text-align: left;
+    position: relative;
   }
   textarea {
     border: none;
