@@ -1,7 +1,7 @@
 <template>
   <div class="magnet">
-    <input class="has-shadow" type="text" name="source" v-focus/>
-    <button type="reset" @click="generateLink">点击生成</button>
+    <input class="has-shadow" type="text" name="source" @keyup.enter="generateLink" v-focus/>
+    <button type="button" @click="generateLink">点击生成</button>
   </div>
 </template>
 
@@ -99,7 +99,7 @@ export default {
     border-radius: 4px 0 0 4px;
   }
   button {
-    padding:0.645rem 0.7rem;
+    padding:0.6rem 0.7rem;
     margin-top: -1px;
     background: #2196F3;
     color: #fff;

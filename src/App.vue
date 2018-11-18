@@ -15,7 +15,7 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -36,5 +36,17 @@ input, button {
 }
 .success-msg{
   color: #2196F3;
+}
+pre hl-ob, pre hl-om {
+  font-weight: 600;
+  color: #333;
+}
+pre hl-an{
+  font-weight: 600;
+  color: #3367d6;
+}
+pre hl-av{
+  font-weight: 600;
+  color: #42b983;
 }
 </style>
