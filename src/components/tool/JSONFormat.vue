@@ -34,6 +34,7 @@ export default {
         result = result.replace(new RegExp(': ([^,\\n[{]+)(,|\\n)', 'g'), ': <hl-av>$1</hl-av>$2')
       } catch (err) {
         console.log(err)
+        result = '错误的json格式'
       }
       return result
     }
