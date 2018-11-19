@@ -38,8 +38,7 @@ export default {
         const lineNumber = `<div class="line-number">${'<span></span>'.repeat(len)}</div>`
         result += lineNumber
       } catch (err) {
-        if (this.input !== '') result = '错误的json格式'
-        console.log(err)
+        result = this.input
       }
       return result
     }
