@@ -1,6 +1,6 @@
 <template>
   <div id="format">
-    <textarea :value="input" @input="update"></textarea>
+    <textarea :value="input" @input="update" placeholder="# 请在出处输入内容..."></textarea>
     <div class="json-result"><pre v-html="JSONFormat"></pre><copy-button></copy-button></div>
   </div>
 </template>
