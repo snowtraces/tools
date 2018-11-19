@@ -38,15 +38,36 @@ input, button {
   color: #2196F3;
 }
 pre hl-ob, pre hl-om {
-  font-weight: 600;
   color: #333;
 }
 pre hl-an{
-  font-weight: 600;
-  color: #3367d6;
+  color: #039;
+  z-index: 999;
 }
 pre hl-av{
-  font-weight: 600;
-  color: #42b983;
+  color: #802;
+}
+pre .line-number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+pre .line-number > span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
+}
+pre .line-number > span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+  width: 2rem;
+  border-right: 1px solid #999;
+  z-index: 1;
 }
 </style>
