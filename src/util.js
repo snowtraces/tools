@@ -1,5 +1,5 @@
 export default{
-  install (Vue, options) {
+  install: function (Vue, options) {
     Vue.prototype.copyToClipboard = function (data) {
       let target = document.createElement('textarea')
       target.style.position = 'absolute'
@@ -35,6 +35,28 @@ export default{
         msgEl.classList.remove('success-msg')
         msgEl.classList.add('is-hidden')
       }, 700)
+    }
+    Vue.prototype.fetchStorageItem = function (key) {
+      if (!key || !localStorage.getItem(key)) return ''
+
+      let data = JSON.parse(localStorage.getItem(key))
+      let names = data['name']
+      names.sort(function (a, b) { return a - b })
+
+      let name = names[0]
+      let value = data['value'][name]
+      return {'name': name, 'value': value}
+    }
+    Vue.prototype.pushStorageItem = function (key, name, value) {
+      const data = localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : {}
+      const names = data['name'] || []
+      const values = data['value'] || {}
+
+      names.indexOf(name) === -1 && names.push(name)
+      values[name] && delete values[name]
+      values[name] = value
+
+      localStorage.setItem(key, JSON.stringify({'name': names, 'value': values}))
     }
   }
 }

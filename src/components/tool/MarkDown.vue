@@ -14,6 +14,8 @@ export default {
   components: {CopyButton},
   data () {
     return {
+      key: 'tools:markdown',
+      name: '',
       input: '# hello'
     }
   },
@@ -25,7 +27,17 @@ export default {
   methods: {
     update: _.debounce(function (e) {
       this.input = e.target.value
+      this.pushStorageItem(this.key, this.name, this.input)
     }, 300)
+  },
+  created () {
+    let data = this.fetchStorageItem(this.key)
+    if (data) {
+      this.input = data.value
+      this.name = data.name
+    } else {
+      this.name = new Date().getTime()
+    }
   }
 }
 </script>
@@ -44,7 +56,7 @@ export default {
     height: 100%;
     vertical-align: top;
     box-sizing: border-box;
-    padding: 0 20px;
+    padding: 20px;
   }
   #editor .md-result {
     background: #fff;
@@ -59,7 +71,6 @@ export default {
     background-color: #f6f6f6;
     font-size: 14px;
     font-family: 'Monaco', courier, monospace;
-    padding: 20px;
   }
   code {
     color: #f66;

@@ -70,4 +70,12 @@ pre .line-number > span:before {
   border-right: 1px solid #999;
   z-index: 1;
 }
+.md-result table td, .md-result table th {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+}
+.md-result table {
+  border-collapse: collapse;
+  font-size: 14px;
+}
 </style>
