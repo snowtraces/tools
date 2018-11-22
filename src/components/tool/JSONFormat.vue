@@ -1,16 +1,24 @@
 <template>
   <div id="format">
-    <textarea :value="input" @input="update" placeholder="# 请在出处输入内容..."></textarea>
-    <div class="json-result"><pre v-html="JSONFormat"></pre><copy-button></copy-button></div>
+    <div class="json-source">
+      <textarea :value="input" @input="update" placeholder="# 请在出处输入内容..."></textarea>
+      <new-button @click.native="newPage"></new-button>
+    </div>
+    <div class="json-result">
+      <pre v-html="JSONFormat"></pre>
+      <copy-button></copy-button>
+    </div>
   </div>
 </template>
 
 <script>
 import _ from 'lodash'
 import CopyButton from '../button/CopyButton'
+import NewButton from '../button/NewButton'
+
 export default {
   name: 'JSONFormat',
-  components: {CopyButton},
+  components: {NewButton, CopyButton},
   data () {
     return {
       key: 'tools:format',
@@ -22,7 +30,11 @@ export default {
     update: _.debounce(function (e) {
       this.input = e.target.value
       this.pushStorageItem(this.key, this.name, this.input)
-    }, 300)
+    }, 300),
+    newPage: function () {
+      this.name = new Date().getTime()
+      this.input = ''
+    }
   },
   computed: {
     JSONFormat: function () {
@@ -62,17 +74,18 @@ export default {
   html, body, #format, pre {
     margin: 0;
     height: 100%;
-    font-family: Consolas,Monaco,monospace;
+    font-family: Consolas, Monaco, monospace;
   }
-  textarea, #format > div {
+
+  .json-source, #format > div {
     display: inline-block;
     width: 49%;
     height: 100%;
     vertical-align: top;
     box-sizing: border-box;
-    padding: 20px;
   }
-  #format > div {
+
+  .json-result {
     background: #f8f8f8;
     text-align: left;
     overflow: auto;
@@ -81,18 +94,27 @@ export default {
     color: #888;
     padding: 20px 0;
   }
-  pre{
+
+  pre {
     overflow: auto;
     line-height: 1.35;
     padding-left: 3.5rem;
     position: relative;
   }
-  textarea {
+  .json-source {
+    position: relative;
+  }
+  .json-source textarea {
     border: none;
     border-right: 1px solid #ccc;
+    width: 100%;
+    height: 100%;
     resize: none;
     outline: none;
     background-color: #f6f6f6;
     font-size: 14px;
+    font-family: 'Monaco', courier, monospace;
+    box-sizing: border-box;
+    padding: 20px;
   }
 </style>

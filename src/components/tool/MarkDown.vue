@@ -1,7 +1,12 @@
 <template>
   <div id="editor">
-    <div class="md-source"><textarea :value="input" @input="update"></textarea><new-button @click.native="newPage"></new-button></div>
-    <div class="md-result"><div v-html="compiledMarkdown"></div><copy-button></copy-button></div>
+    <div class="md-source"><textarea :value="input" @input="update"></textarea>
+      <new-button @click.native="newPage"></new-button>
+    </div>
+    <div class="md-result">
+      <div v-html="compiledMarkdown"></div>
+      <copy-button></copy-button>
+    </div>
   </div>
 </template>
 
@@ -10,6 +15,7 @@ import marked from 'marked'
 import _ from 'lodash'
 import CopyButton from '../button/CopyButton'
 import NewButton from '../button/NewButton'
+
 export default {
   name: 'MarkDown',
   components: {NewButton, CopyButton},
@@ -22,7 +28,7 @@ export default {
   },
   computed: {
     compiledMarkdown: function () {
-      return marked(this.input, { sanitize: true })
+      return marked(this.input, {sanitize: true})
     }
   },
   methods: {
@@ -54,6 +60,7 @@ export default {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     color: #333;
   }
+
   .md-source, #editor .md-result {
     display: inline-block;
     width: 49%;
@@ -62,15 +69,18 @@ export default {
     box-sizing: border-box;
 
   }
+
   #editor .md-result {
     background: #fff;
     text-align: left;
     position: relative;
     padding: 20px;
   }
+
   .md-source {
     position: relative;
   }
+
   .md-source textarea {
     border: none;
     border-right: 1px solid #ccc;
@@ -84,6 +94,7 @@ export default {
     box-sizing: border-box;
     padding: 20px;
   }
+
   code {
     color: #f66;
   }
