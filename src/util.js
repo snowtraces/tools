@@ -41,7 +41,7 @@ export default{
 
       let data = JSON.parse(localStorage.getItem(key))
       let names = data['name']
-      names.sort(function (a, b) { return a - b })
+      names.sort(function (a, b) { return b - a })
 
       let name = names[0]
       let value = data['value'][name]
@@ -55,6 +55,12 @@ export default{
       names.indexOf(name) === -1 && names.push(name)
       values[name] && delete values[name]
       values[name] = value
+
+      // 只保存最新十条
+      if (names.length > 10) {
+        let _name = names.pop()
+        delete values[_name]
+      }
 
       localStorage.setItem(key, JSON.stringify({'name': names, 'value': values}))
     }

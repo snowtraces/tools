@@ -7,40 +7,52 @@
 
 <script>
 import _ from 'lodash'
-import CopyButton from '../CopyButton'
+import CopyButton from '../button/CopyButton'
 export default {
   name: 'JSONFormat',
   components: {CopyButton},
   data () {
     return {
+      key: 'tools:format',
+      name: '',
       input: ''
     }
   },
   methods: {
     update: _.debounce(function (e) {
       this.input = e.target.value
+      this.pushStorageItem(this.key, this.name, this.input)
     }, 300)
   },
   computed: {
     JSONFormat: function () {
       let result = ''
+      let len = 1
       try {
         let json = JSON.parse(this.input)
         result = JSON.stringify(json, undefined, 2)
-        let len = result.split('\n').length
+        len = result.split('\n').length
         console.log('len', len)
         result = result.replace(new RegExp('([{}])', 'g'), '<hl-ob>$1</hl-ob>')
         result = result.replace(new RegExp('([[\\]])', 'g'), '<hl-om>$1</hl-om>')
         result = result.replace(new RegExp('"([^"]+)":', 'g'), '<hl-an>"$1"</hl-an>:')
         result = result.replace(new RegExp('([^,:\\n[{]+)(,|\\n)', 'g'), '<hl-av>$1</hl-av>$2')
         result = result.replace(new RegExp(': ([^,:\\n[{]+)(,|\\n)', 'g'), ': <hl-av>$1</hl-av>$2')
-
-        const lineNumber = `<div class="line-number">${'<span></span>'.repeat(len)}</div>`
-        result += lineNumber
       } catch (err) {
         result = this.input
       }
+      const lineNumber = `<div class="line-number">${'<span></span>'.repeat(len)}</div>`
+      result += lineNumber
       return result
+    }
+  },
+  created () {
+    let data = this.fetchStorageItem(this.key)
+    if (data) {
+      this.input = data.value
+      this.name = data.name
+    } else {
+      this.name = new Date().getTime()
     }
   }
 }
