@@ -2,6 +2,7 @@
   <div id="editor">
     <div class="md-source"><textarea :value="input" @input="update"></textarea>
       <new-button @click.native="newPage"></new-button>
+      <list-button @toggleList="toggleList"><div slot="list" v-html="listData"></div></list-button>
     </div>
     <div class="md-result">
       <div v-html="compiledMarkdown"></div>
@@ -15,12 +16,14 @@ import marked from 'marked'
 import _ from 'lodash'
 import CopyButton from '../button/CopyButton'
 import NewButton from '../button/NewButton'
+import ListButton from '../button/ListButton'
 
 export default {
   name: 'MarkDown',
-  components: {NewButton, CopyButton},
+  components: {ListButton, NewButton, CopyButton},
   data () {
     return {
+      listData: '',
       key: 'tools:markdown',
       name: '',
       input: '# hello'
@@ -39,6 +42,23 @@ export default {
     newPage: function () {
       this.name = new Date().getTime()
       this.input = ''
+    },
+    toggleList: function () {
+      if (this.listData) {
+        this.listData = ''
+      } else {
+        let val = this.listStorageItem(this.key)
+        let _list = []
+        for (let key in val) {
+          let _date = new Date(parseInt(key))
+          _list.push(
+            `<div class="data-list">
+              <div class="data-list-title">${_date.toLocaleDateString()} ${_date.toLocaleTimeString()}</div>
+              <div class="data-list-abstract">${val[key].substr(0, 144)}</div>
+            </div>`)
+        }
+        this.listData = _list.join('')
+      }
     }
   },
   created () {
@@ -54,7 +74,7 @@ export default {
 </script>
 
 <style scoped>
-  html, body, div {
+  html, body, #editor, #editor > div {
     margin: 0;
     height: 100%;
     font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -94,7 +114,6 @@ export default {
     box-sizing: border-box;
     padding: 20px;
   }
-
   code {
     color: #f66;
   }

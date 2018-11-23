@@ -47,6 +47,13 @@ export default{
       let value = data['value'][name]
       return {'name': name, 'value': value}
     }
+    Vue.prototype.listStorageItem = function (key) {
+      if (!key || !localStorage.getItem(key)) return ''
+
+      let data = JSON.parse(localStorage.getItem(key))
+      let values = data['value']
+      return values
+    }
     Vue.prototype.pushStorageItem = function (key, name, value) {
       const data = localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : {}
       const names = data['name'] || []

@@ -78,4 +78,15 @@ pre .line-number > span:before {
   border-collapse: collapse;
   font-size: 14px;
 }
+
+.data-list{
+  padding-bottom: 12px;
+}
+.data-list-title {
+  font-size: 0.875rem;
+  color: #999;
+}
+.data-list-abstract {
+  font-size: 0.875rem;
+}
 </style>
