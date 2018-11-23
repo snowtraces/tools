@@ -2,7 +2,7 @@
   <div id="editor">
     <div class="md-source"><textarea :value="input" @input="update"></textarea>
       <new-button @click.native="newPage"></new-button>
-      <list-button @toggleList="toggleList" :listData="listData"></list-button>
+      <list-button @toggleList="toggleList" @loadData="loadData" :listData="listData"></list-button>
     </div>
     <div class="md-result">
       <div v-html="compiledMarkdown"></div>
@@ -47,18 +47,18 @@ export default {
       if (this.listData) {
         this.listData = ''
       } else {
-        let val = this.listStorageItem(this.key)
-        let _list = []
-        for (let key in val) {
-          let _date = new Date(parseInt(key))
-          _list.push(
-            `<div class="data-list" @click="loadData">
-              <div class="data-list-title">${_date.toLocaleDateString()} ${_date.toLocaleTimeString()}</div>
-              <div class="data-list-abstract">${val[key].substr(0, 144)}</div>
-            </div>`)
-        }
-        this.listData = _list.join('')
+        this.listData = this.listStorageItem(this.key)
       }
+    },
+    loadData: function (name) {
+      let data = this.fetchStorageItem(this.key, name)
+      if (data) {
+        this.input = data.value
+        this.name = data.name
+      }
+
+      // hidden list
+      this.listData = ''
     }
   },
   created () {

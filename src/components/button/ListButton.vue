@@ -6,7 +6,12 @@
         <path d="M0 0h24v24H0z" fill="none"/>
       </svg>
     </button>
-    <div class="list" v-html="listData" v-show="listData"></div>
+    <div class="list" v-show="listData">
+      <div class="data-list" v-for="key in Object.keys(listData)" :key="key" @click="$emit('loadData', key)">
+        <div class="data-list-title">{{new Date(parseInt(key)).toLocaleDateString()}} {{new Date(parseInt(key)).toLocaleTimeString()}}</div>
+          <div class="data-list-abstract">{{listData[key].substr(0, 144)}}</div>
+      </div>
+    </div>
   </div>
 </template>
 

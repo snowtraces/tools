@@ -36,14 +36,14 @@ export default{
         msgEl.classList.add('is-hidden')
       }, 700)
     }
-    Vue.prototype.fetchStorageItem = function (key) {
+    Vue.prototype.fetchStorageItem = function (key, name) {
       if (!key || !localStorage.getItem(key)) return ''
 
       let data = JSON.parse(localStorage.getItem(key))
       let names = data['name']
       names.sort(function (a, b) { return b - a })
 
-      let name = names[0]
+      name = name || names[0]
       let value = data['value'][name]
       return {'name': name, 'value': value}
     }
