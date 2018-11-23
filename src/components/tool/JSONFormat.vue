@@ -3,6 +3,7 @@
     <div class="json-source">
       <textarea :value="input" @input="update" placeholder="# 请在出处输入内容..."></textarea>
       <new-button @click.native="newPage"></new-button>
+      <list-button @toggleList="toggleList" @loadData="loadData" :listData="listData"></list-button>
     </div>
     <div class="json-result">
       <pre v-html="JSONFormat"></pre>
@@ -15,12 +16,14 @@
 import _ from 'lodash'
 import CopyButton from '../button/CopyButton'
 import NewButton from '../button/NewButton'
+import ListButton from '../button/ListButton'
 
 export default {
   name: 'JSONFormat',
-  components: {NewButton, CopyButton},
+  components: {NewButton, CopyButton, ListButton},
   data () {
     return {
+      listData: '',
       key: 'tools:format',
       name: '',
       input: ''
@@ -34,6 +37,23 @@ export default {
     newPage: function () {
       this.name = new Date().getTime()
       this.input = ''
+    },
+    toggleList: function () {
+      if (this.listData) {
+        this.listData = ''
+      } else {
+        this.listData = this.listStorageItem(this.key)
+      }
+    },
+    loadData: function (name) {
+      let data = this.fetchStorageItem(this.key, name)
+      if (data) {
+        this.input = data.value
+        this.name = data.name
+      }
+
+      // hidden list
+      this.listData = ''
     }
   },
   computed: {
