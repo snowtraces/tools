@@ -6,13 +6,14 @@
         <path d="M0 0h24v24H0z" fill="none"/>
       </svg>
     </button>
-    <div class="list" v-show="$slots.list[0].data.domProps.innerHTML"><slot name="list"></slot></div>
+    <div class="list" v-html="listData" v-show="listData"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ListButton'
+  name: 'ListButton',
+  props: ['listData']
 }
 </script>
 

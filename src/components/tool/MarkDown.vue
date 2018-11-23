@@ -2,7 +2,7 @@
   <div id="editor">
     <div class="md-source"><textarea :value="input" @input="update"></textarea>
       <new-button @click.native="newPage"></new-button>
-      <list-button @toggleList="toggleList"><div slot="list" v-html="listData"></div></list-button>
+      <list-button @toggleList="toggleList" :listData="listData"></list-button>
     </div>
     <div class="md-result">
       <div v-html="compiledMarkdown"></div>
@@ -52,7 +52,7 @@ export default {
         for (let key in val) {
           let _date = new Date(parseInt(key))
           _list.push(
-            `<div class="data-list">
+            `<div class="data-list" @click="loadData">
               <div class="data-list-title">${_date.toLocaleDateString()} ${_date.toLocaleTimeString()}</div>
               <div class="data-list-abstract">${val[key].substr(0, 144)}</div>
             </div>`)
