@@ -79,13 +79,7 @@ export default {
     }
   },
   created () {
-    let data = this.fetchStorageItem(this.key)
-    if (data) {
-      this.input = data.value
-      this.name = data.name
-    } else {
-      this.name = new Date().getTime()
-    }
+    this.name = new Date().getTime()
   }
 }
 </script>

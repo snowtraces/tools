@@ -1,6 +1,7 @@
 <template>
   <div class="list-btn-wrap">
-    <button class='list-btn' title="列表" @click="$emit('toggleList')">
+    <button class='list-btn' title="列表" @click="$emit('toggleList')"
+            :style="{fill: listData ? '#fff' : '#333', background: listData ? '#2196F3' : '#eee'}">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/>
         <path d="M0 0h24v24H0z" fill="none"/>
@@ -9,7 +10,7 @@
     <div class="list" v-show="listData">
       <div class="data-list" v-for="key in Object.keys(listData)" :key="key" @click="$emit('loadData', key)">
         <div class="data-list-title">{{new Date(parseInt(key)).toLocaleDateString()}} {{new Date(parseInt(key)).toLocaleTimeString()}}</div>
-          <div class="data-list-abstract">{{listData[key].substr(0, 144)}}</div>
+          <div class="data-list-abstract" :title="listData[key]">{{listData[key].substr(0, 64)}}</div>
       </div>
     </div>
   </div>
@@ -30,9 +31,8 @@ export default {
   }
   .list-btn {
     background: #eee;
-    font-size: 14px;
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     cursor: pointer;
     outline: none;
@@ -54,10 +54,9 @@ export default {
     position: absolute;
     right: 40px;
     bottom: 40px;
-    padding: 16px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
     background: #fff;
-    width: 300px;
+    width: 360px;
     text-align: left;
   }
 

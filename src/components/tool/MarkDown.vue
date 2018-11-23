@@ -1,6 +1,7 @@
 <template>
   <div id="editor">
-    <div class="md-source"><textarea :value="input" @input="update"></textarea>
+    <div class="md-source">
+      <textarea :value="input" @input="update" placeholder="# Hello"></textarea>
       <new-button @click.native="newPage"></new-button>
       <list-button @toggleList="toggleList" @loadData="loadData" :listData="listData"></list-button>
     </div>
@@ -26,7 +27,7 @@ export default {
       listData: '',
       key: 'tools:markdown',
       name: '',
-      input: '# hello'
+      input: ''
     }
   },
   computed: {
@@ -62,13 +63,7 @@ export default {
     }
   },
   created () {
-    let data = this.fetchStorageItem(this.key)
-    if (data) {
-      this.input = data.value
-      this.name = data.name
-    } else {
-      this.name = new Date().getTime()
-    }
+    this.name = new Date().getTime()
   }
 }
 </script>
@@ -94,7 +89,7 @@ export default {
     background: #fff;
     text-align: left;
     position: relative;
-    padding: 20px;
+    padding: 0 20px;
   }
 
   .md-source {

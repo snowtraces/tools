@@ -80,7 +80,12 @@ pre .line-number > span:before {
 }
 
 .data-list{
-  padding-bottom: 12px;
+  padding: 8px 16px;
+  border-bottom: 1px solid #ddd;
+}
+.data-list:hover{
+  cursor: pointer;
+  background: #f2f2f2;
 }
 .data-list-title {
   font-size: 0.875rem;
@@ -88,5 +93,8 @@ pre .line-number > span:before {
 }
 .data-list-abstract {
   font-size: 0.875rem;
+}
+.data-list-*{
+  pointer-events: none;
 }
 </style>

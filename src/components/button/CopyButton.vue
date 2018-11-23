@@ -40,9 +40,8 @@ export default {
     top: 24px;
     right: 24px;
     background: #eee;
-    font-size: 14px;
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     cursor: pointer;
     outline: none;
