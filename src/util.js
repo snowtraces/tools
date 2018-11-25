@@ -131,22 +131,22 @@ export default{
         sl = 'zh-CN'
       }
 
-      let basePath = 'https://translate.google.cn/translate_a/single'
+      let basePath = '/translate/single'
       let params = []
       params.push('client=t')
       params.push(`sl=${sl}`)
       params.push(`tl=${tl}`)
       params.push('hl=zh-CN')
-      params.push('dt=at')
-      params.push('dt=bd')
-      params.push('dt=ex')
-      params.push('dt=ld')
-      params.push('dt=md')
-      params.push('dt=qca')
-      params.push('dt=rw')
-      params.push('dt=rm')
-      params.push('dt=ss')
-      params.push('dt=t')
+      // params.push('dt=at') // 近义词
+      params.push('dt=bd') // 翻译结果列表
+      params.push('dt=ex') // 例子
+      // params.push('dt=ld')
+      params.push('dt=md') // 定义
+      // params.push('dt=qca')
+      // params.push('dt=rw') // 词组
+      params.push('dt=rm') // 音标
+      params.push('dt=ss') // 其他词性
+      params.push('dt=t') // 源text的翻译
       params.push('ie=UTF-8')
       params.push('oe=UTF-8')
       params.push('otf=1')
