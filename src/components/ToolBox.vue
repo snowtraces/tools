@@ -1,5 +1,5 @@
 <template>
-    <div class="tool-box">
+    <div class="tool-box" tabindex="-1" @keyup.esc="hidden">
       <magnet v-if="tool == 'magnet'" :isShow="isShow"></magnet>
       <mark-down v-if="tool == 'markdown'" :isShow="isShow"></mark-down>
       <JSONFormat v-if="tool == 'format'" :isShow="isShow"></JSONFormat>
