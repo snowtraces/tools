@@ -98,6 +98,7 @@ export default {
     width: 60%;
     max-width: 440px;
     border-radius: 4px 0 0 4px;
+    outline: none;
   }
   button {
     padding:0.6rem 0.7rem;

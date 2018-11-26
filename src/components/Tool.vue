@@ -33,41 +33,43 @@ export default {
 
 <style scoped>
   .tool {
-    width: 12rem;
-    height: 9rem;
-    margin: 1.5rem;
+    width: 10rem;
+    height: 7.5rem;
+    margin: 1.25rem;
     border-radius: 5px;
     position: relative;
     display: inline-block;
   }
   .tool:hover .tool-content {
-    transform: scale(1.1);
     transition: .3s;
+    opacity: 0.85;
   }
   .tool-content {
     width: 100%;
     height: 100%;
     border-radius: 5px;
     cursor: pointer;
+    background: #2196F3;
   }
   .tool-content svg{
-    height: 4.5rem;
-    margin: 0.75rem auto;
-    fill: #2196F3;
+    height: 3.75rem;
+    margin: 0.5rem auto;
+    fill: #fff;
   }
   .tool-title {
     width: 100%;
-    height: 3rem;
+    height: 2.5rem;
     position: absolute;
     left: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
-    line-height: 3rem;
-    font-size: 1.125em;
+    line-height: 2.5rem;
+    font-size: 17px;
     font-weight: 600;
     letter-spacing: .1em;
     border-radius: 0 0 5px 5px;
     cursor: pointer;
+    color: #08f;
+    background: #fff;
   }
 
 </style>
