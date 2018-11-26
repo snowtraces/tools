@@ -8,13 +8,6 @@
 <script>
 export default {
   name: 'Magnet',
-  directives: {
-    focus: {
-      inserted: function (el) {
-        el.focus()
-      }
-    }
-  },
   methods: {
     generateLink: function (event) {
       let e = event.target

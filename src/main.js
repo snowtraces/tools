@@ -7,6 +7,11 @@ import util from './util'
 
 Vue.config.productionTip = false
 Vue.use(util)
+Vue.directive('focus', {
+  inserted: function (el) {
+    el.focus()
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({

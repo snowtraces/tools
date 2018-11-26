@@ -103,6 +103,7 @@ pre .line-number > span:before {
 
 .translate-detail .read {
   margin-bottom: 8px;
+  font-size: 16px;
 }
 .translate-detail .src-type, .translate-detail .tar-type{
   margin-top: 16px;

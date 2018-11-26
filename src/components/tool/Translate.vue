@@ -1,7 +1,7 @@
 <template>
   <div id="translate">
     <div class="translate-source">
-      <textarea :value="input" @input="update" placeholder="# 待翻译内容..."></textarea>
+      <textarea v-model="input" @input="update" v-focus></textarea>
       <div class="source-detail translate-detail" v-html="sourceDetail"></div>
     </div>
     <div class="translate-result">
@@ -29,8 +29,8 @@ export default {
   },
   methods: {
     update: _.debounce(function (e) {
-      this.input = e.target.value
-      let url = this.doGoogleTranslate(this.input)
+      let input = e.target.value
+      let url = this.doGoogleTranslate(input)
       url && axios.get(url)
         .then(response => {
           this.translatedData = response.data
@@ -75,7 +75,7 @@ export default {
         .catch(e => {
           this.errors.push(e)
         })
-    }, 500)
+    }, 300)
   }
 }
 </script>
@@ -115,12 +115,14 @@ export default {
     box-sizing: border-box;
     padding: 16px;
     border-bottom: 1px solid #eee;
+    font-weight: 600;
   }
   .target-value{
     height: 160px;
     padding: 18px;
     background-color: #f6f6f6;
     border-bottom: 1px solid #eee;
+    font-weight: 600;
   }
   .translate-detail{
     height: calc(100% - 160px);
