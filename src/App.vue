@@ -100,4 +100,26 @@ pre .line-number > span:before {
 .data-list-*{
   pointer-events: none;
 }
+
+.translate-detail .read {
+  margin-bottom: 8px;
+}
+.translate-detail .src-type, .translate-detail .tar-type{
+  margin-top: 16px;
+  color: #999;
+  font-style: italic;
+}
+.translate-detail .src-explain-example {
+  color: #999;
+}
+.translate-detail .src-explain,
+.translate-detail .src-explain-example,
+.translate-detail .tar-item{
+  margin-left: 2em;
+}
+  
+.translate-detail .tar-item .item-alt {
+  padding-left: 1em;
+  color: #999;
+}
 </style>

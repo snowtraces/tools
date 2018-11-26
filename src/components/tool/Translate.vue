@@ -5,9 +5,8 @@
       <div class="source-detail translate-detail" v-html="sourceDetail"></div>
     </div>
     <div class="translate-result">
-      <div class="target-value" v-html="targetValue"></div>
+      <div><div class="target-value" v-html="targetValue"></div><copy-button></copy-button></div>
       <div class="target-detail translate-detail" v-html="targetDetail"></div>
-      <copy-button></copy-button>
     </div>
   </div>
 </template>
@@ -46,9 +45,10 @@ export default {
             sDefineHTML.push(`
               <div class="src-type">${item[0]}</div>
               <div class="src-explain">${item[1][0][0]}</div>
-              <div class="src-explain">${item[1][0][2]}</div>
+              <div class="src-explain-example">${item[1][0][2]}</div>
             `)
           })
+          this.sourceDetail = ''
           sRead && (this.sourceDetail += `<div class="read">${sRead}</div>`)
           this.sourceDetail += `${sDefineHTML.join('\n')}`
 
@@ -64,17 +64,18 @@ export default {
             `)
             item[2] && item[2].forEach(function (t) {
               tListHTML.push(`
-                <div>${t[0]} ${t[1].join()}</div>
+                <div class="tar-item"><span class="item-title">${t[0]}</span><span class="item-alt">${t[1].join(', ')}</span></div>
               `)
             })
           })
+          this.targetDetail = ''
           tarRead && (this.targetDetail += `<div class="read">${tarRead}</div>`)
           this.targetDetail += `${tListHTML.join('\n')}`
         })
         .catch(e => {
           this.errors.push(e)
         })
-    }, 1000)
+    }, 500)
   }
 }
 </script>
@@ -109,15 +110,17 @@ export default {
     resize: none;
     outline: none;
     background-color: #f6f6f6;
-    font-size: 14px;
+    font-size: 18px;
     font-family: 'Monaco', courier, monospace;
     box-sizing: border-box;
     padding: 16px;
+    border-bottom: 1px solid #eee;
   }
   .target-value{
     height: 160px;
-    padding: 16px;
+    padding: 18px;
     background-color: #f6f6f6;
+    border-bottom: 1px solid #eee;
   }
   .translate-detail{
     height: calc(100% - 160px);
@@ -125,9 +128,6 @@ export default {
     padding: 16px;
     text-align: left;
     overflow-y: auto;
-  }
-
-  .read {
-    margin-bottom: 1em;
+    font-size: 14px;
   }
 </style>
