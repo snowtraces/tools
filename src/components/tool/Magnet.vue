@@ -46,7 +46,7 @@ export default {
   },
   watch: {
     isShow: function (val) {
-      if(val) {
+      if (val) {
         document.querySelector('.magnet input').focus()
       }
     }

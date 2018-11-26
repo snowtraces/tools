@@ -81,7 +81,7 @@ export default {
   },
   watch: {
     isShow: function (val) {
-      if(val) {
+      if (val) {
         document.querySelector('#format textarea').focus()
       }
     }

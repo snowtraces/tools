@@ -65,7 +65,7 @@ export default {
   },
   watch: {
     isShow: function (val) {
-      if(val) {
+      if (val) {
         document.querySelector('#editor textarea').focus()
       }
     }
