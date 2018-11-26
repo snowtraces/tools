@@ -30,6 +30,13 @@ export default {
   methods: {
     update: _.debounce(function (e) {
       let input = e.target.value
+      if (!input) {
+        this.targetValue = ''
+        this.sourceDetail = ''
+        this.targetDetail = ''
+        return
+      }
+
       let url = this.doGoogleTranslate(input)
       url && axios.get(url)
         .then(response => {
