@@ -31,7 +31,7 @@ export default {
     update: _.debounce(function (e) {
       this.input = e.target.value
       let url = this.doGoogleTranslate(this.input)
-      axios.get(url)
+      url && axios.get(url)
         .then(response => {
           this.translatedData = response.data
           if (!this.translatedData) {

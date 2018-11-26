@@ -117,7 +117,6 @@ pre .line-number > span:before {
 .translate-detail .tar-item{
   margin-left: 2em;
 }
-  
 .translate-detail .tar-item .item-alt {
   padding-left: 1em;
   color: #999;
