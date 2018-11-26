@@ -8,6 +8,7 @@
 <script>
 export default {
   name: 'Magnet',
+  props: ['isShow'],
   methods: {
     generateLink: function (event) {
       let e = event.target
@@ -41,6 +42,13 @@ export default {
     focus: function (event) {
       let e = event.target
       e.focus()
+    }
+  },
+  watch: {
+    isShow: function (val) {
+      if(val) {
+        document.querySelector('.magnet input').focus()
+      }
     }
   },
   data () {

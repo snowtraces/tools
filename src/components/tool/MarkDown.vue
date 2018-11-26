@@ -21,6 +21,7 @@ import ListButton from '../button/ListButton'
 
 export default {
   name: 'MarkDown',
+  props: ['isShow'],
   components: {ListButton, NewButton, CopyButton},
   data () {
     return {
@@ -60,6 +61,13 @@ export default {
 
       // hidden list
       this.listData = ''
+    }
+  },
+  watch: {
+    isShow: function (val) {
+      if(val) {
+        document.querySelector('#editor textarea').focus()
+      }
     }
   },
   created () {

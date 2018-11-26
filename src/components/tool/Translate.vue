@@ -17,6 +17,7 @@ import axios from 'axios'
 import CopyButton from '../button/CopyButton'
 export default {
   name: 'Translate',
+  props: ['isShow'],
   components: {CopyButton},
   data () {
     return {
@@ -52,7 +53,7 @@ export default {
             sDefineHTML.push(`
               <div class="src-type">${item[0]}</div>
               <div class="src-explain">${item[1][0][0]}</div>
-              <div class="src-explain-example">${item[1][0][2]}</div>
+              <div class="src-explain-example">${item[1][0][2] || ''}</div>
             `)
           })
           this.sourceDetail = ''
@@ -83,6 +84,13 @@ export default {
           this.errors.push(e)
         })
     }, 300)
+  },
+  watch: {
+    isShow: function (val) {
+      if(val) {
+        document.querySelector('#translate textarea').focus()
+      }
+    }
   }
 }
 </script>

@@ -20,6 +20,7 @@ import ListButton from '../button/ListButton'
 
 export default {
   name: 'JSONFormat',
+  props: ['isShow'],
   components: {NewButton, CopyButton, ListButton},
   data () {
     return {
@@ -76,6 +77,13 @@ export default {
       const lineNumber = `<div class="line-number">${'<span></span>'.repeat(len)}</div>`
       result += lineNumber
       return result
+    }
+  },
+  watch: {
+    isShow: function (val) {
+      if(val) {
+        document.querySelector('#format textarea').focus()
+      }
     }
   },
   created () {

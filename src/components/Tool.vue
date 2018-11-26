@@ -6,7 +6,7 @@
       <div class="tool-title" @click="openBox">
         <slot name="title"></slot>
       </div>
-      <tool-box v-if="isShow" :tool="name" @closeBox="closeBox"></tool-box>
+      <tool-box v-show="isShow" :tool="name" :isShow="isShow" @closeBox="closeBox"></tool-box>
     </div>
 </template>
 <script>
