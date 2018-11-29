@@ -1,5 +1,5 @@
 <template>
-    <div class="tool has-shadow">
+    <div class="tool">
       <div class="tool-content" @click="openBox">
         <slot name="content"></slot>
       </div>
@@ -39,22 +39,22 @@ export default {
     border-radius: 5px;
     position: relative;
     display: inline-block;
+    border: 1px solid #dadce0;
   }
   .tool:hover .tool-content {
-    transition: .3s;
-    opacity: 0.85;
+    transition: all .2s ease-in-out;
+    transform: scale(1.07);
   }
   .tool-content {
     width: 100%;
-    height: 100%;
+    height: 5rem;
     border-radius: 5px;
     cursor: pointer;
-    background: #2196F3;
   }
   .tool-content svg{
     height: 3.75rem;
     margin: 0.5rem auto;
-    fill: #fff;
+    fill: #1a73e8;
   }
   .tool-title {
     width: 100%;
@@ -68,8 +68,8 @@ export default {
     letter-spacing: .1em;
     border-radius: 0 0 5px 5px;
     cursor: pointer;
-    color: #08f;
-    background: #fff;
+    color: #1a73e8;
+    background-color: rgba(66,133,244,0.12);
   }
 
 </style>
