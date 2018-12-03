@@ -103,7 +103,7 @@ export default {
   button {
     padding:0.6rem 0.7rem;
     margin-top: -1px;
-    background: #2196F3;
+    background: #1a73e8;
     color: #fff;
     cursor: pointer;
     border-radius: 0 4px 4px 0;

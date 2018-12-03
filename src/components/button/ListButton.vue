@@ -1,7 +1,7 @@
 <template>
   <div class="list-btn-wrap">
     <button class='list-btn' title="列表" @click="$emit('toggleList')"
-            :style="{fill: listData ? '#fff' : '#333', background: listData ? '#2196F3' : '#eee'}">
+            :style="{fill: listData ? '#fff' : '#333', background: listData ? '#1a73e8' : '#eee'}">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/>
         <path d="M0 0h24v24H0z" fill="none"/>

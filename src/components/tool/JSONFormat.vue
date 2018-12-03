@@ -101,7 +101,6 @@ export default {
 
   .json-source, #format > div {
     display: inline-block;
-    width: 49%;
     height: 100%;
     vertical-align: top;
     box-sizing: border-box;
@@ -115,6 +114,7 @@ export default {
     position: relative;
     color: #888;
     padding: 20px 0;
+    width: 58%;
   }
 
   pre {
@@ -125,6 +125,7 @@ export default {
   }
   .json-source {
     position: relative;
+    width: 40%;
   }
   .json-source textarea {
     border: none;
