@@ -61,7 +61,14 @@ export default {
           this.sourceDetail += `${sDefineHTML.join('\n')}`
 
           // 2. 翻译结果
-          this.targetValue = this.translatedData[0][0][0]
+          let tarArray = this.translatedData[0]
+          let tarSize = tarArray.length
+          let tarValueArray = []
+          for (let i = 0; i < tarSize - 1; i++) {
+            tarValueArray.push(tarArray[i][0])
+          }
+          this.targetValue = tarValueArray.join('')
+
           let tarRead = this.translatedData[0][1][2] || ''
 
           let tList = this.translatedData[1]
