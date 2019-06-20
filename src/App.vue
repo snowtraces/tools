@@ -38,7 +38,7 @@ input, button {
   color: #f00;
 }
 .success-msg{
-  color: #2196F3;
+  color: #1a73e8;
 }
 pre hl-ob, pre hl-om {
   color: #333;

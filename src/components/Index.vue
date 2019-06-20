@@ -35,7 +35,7 @@ export default {
     width: 100vw;
     height: 100vh;
     box-sizing: border-box;
-    padding: 3rem;
+    padding: 3rem 0;
     z-index: 1;
   }
 </style>

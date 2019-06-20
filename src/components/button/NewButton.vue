@@ -13,7 +13,7 @@ export default {
   methods: {
     newContent: function (e) {
       let el = e.target
-      el.style.fill = '#2196F3'
+      el.style.fill = '#1a73e8'
       setTimeout(function () {
         el.style.fill = '#333'
       }, 500)

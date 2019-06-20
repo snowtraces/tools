@@ -33,7 +33,6 @@ export default {
   methods: {
     update: _.debounce(function (e) {
       this.input = e.target.value
-      this.pushStorageItem(this.key, this.name, this.input)
     }, 300),
     newPage: function () {
       this.name = new Date().getTime()
@@ -64,6 +63,9 @@ export default {
       try {
         let json = JSON.parse(this.input)
         result = JSON.stringify(json, undefined, 2)
+        if (result) {
+          this.pushStorageItem(this.key, this.name, result)
+        }
         len = result.split('\n').length
         console.log('len', len)
         result = result.replace(new RegExp('([{}])', 'g'), '<hl-ob>$1</hl-ob>')

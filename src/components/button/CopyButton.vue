@@ -25,7 +25,7 @@ export default {
       target.setSelectionRange(0, target.value.length)
       document.execCommand('copy')
       target.remove()
-      el.style.fill = '#2196F3'
+      el.style.fill = '#1a73e8'
       setTimeout(function () {
         el.style.fill = '#333'
       }, 500)
