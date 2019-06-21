@@ -1,4 +1,4 @@
-export default{
+export default {
   install: function (Vue, options) {
     Vue.prototype.copyToClipboard = function (data) {
       let target = document.createElement('textarea')
