@@ -42,26 +42,26 @@ export default {
     border: 1px solid #dadce0;
   }
   .tool:hover .tool-content {
-    transform: scale(1.1);
-    transition: .3s;
+    transition: all .2s ease-in-out;
+    transform: scale(1.07);
   }
   .tool-content {
     width: 100%;
-    height: 100%;
+    height: 5rem;
     border-radius: 5px;
     cursor: pointer;
   }
   .tool-content svg{
     height: 3.75rem;
-    margin: .5rem auto;
+  margin: 0.5rem auto;
     fill: #1a73e8;
   }
   .tool-title {
     width: 100%;
     height: 2.5rem;
     position: absolute;
-    left: 0px;
-    bottom: 0px;
+    left: 0;
+    bottom: 0;
     line-height: 2.5rem;
     font-size: 17px;
     font-weight: 600;

@@ -124,6 +124,7 @@ export default {
       if (!query) {
         return ''
       }
+      query = query.replace(/[\r\n\s]+/g, ' ')
       let sl = 'en'
       let tl = 'zh-CN'
       if (!/.*[a-z].*/ig.test(query)) {
