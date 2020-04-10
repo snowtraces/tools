@@ -8,7 +8,7 @@
       </svg>
     </button>
     <div class="list" v-show="listData">
-      <div class="data-list" v-for="key in Object.keys(listData)" :key="key" @click="$emit('loadData', key)">
+      <div class="data-list" v-for="key in Object.keys(listData).reverse()" :key="key" @click="$emit('loadData', key)">
         <div class="data-list-title">{{new Date(parseInt(key)).toLocaleDateString()}} {{new Date(parseInt(key)).toLocaleTimeString()}}</div>
           <div class="data-list-abstract" :title="listData[key]">{{listData[key].substr(0, 64)}}</div>
       </div>
@@ -58,6 +58,8 @@ export default {
     background: #fff;
     width: 360px;
     text-align: left;
+    max-height: 500px;
+    overflow: auto;
   }
 
 </style>

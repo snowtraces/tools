@@ -1,4 +1,4 @@
-export default{
+export default {
   install: function (Vue, options) {
     Vue.prototype.copyToClipboard = function (data) {
       let target = document.createElement('textarea')
@@ -63,9 +63,9 @@ export default{
       values[name] && delete values[name]
       values[name] = value
 
-      // 只保存最新十条
-      if (names.length > 10) {
-        let _name = names.pop()
+      // 只保存最新100条
+      if (names.length > 100) {
+        let _name = names.shift()
         delete values[_name]
       }
 

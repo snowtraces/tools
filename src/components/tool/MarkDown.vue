@@ -39,7 +39,9 @@ export default {
   methods: {
     update: _.debounce(function (e) {
       this.input = e.target.value
-      this.pushStorageItem(this.key, this.name, this.input)
+      if (this.input) {
+        this.pushStorageItem(this.key, this.name, this.input)
+      }
     }, 300),
     newPage: function () {
       this.name = new Date().getTime()

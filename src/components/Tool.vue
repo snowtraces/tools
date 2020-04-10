@@ -53,7 +53,7 @@ export default {
   }
   .tool-content svg{
     height: 3.75rem;
-    margin: 0.5rem auto;
+  margin: 0.5rem auto;
     fill: #1a73e8;
   }
   .tool-title {
@@ -65,11 +65,11 @@ export default {
     line-height: 2.5rem;
     font-size: 17px;
     font-weight: 600;
-    letter-spacing: .1em;
-    border-radius: 0 0 5px 5px;
+    letter-spacing: 0.1em;
     cursor: pointer;
     color: #1a73e8;
-    background-color: rgba(66,133,244,0.12);
+    background-color: rgba(66, 133, 244, 0.12);
+    border-radius: 0px 0px 5px 5px;
   }
 
 </style>
